@@ -1,6 +1,6 @@
 {
     "*": {
-        "address-testnet": "erd1qqqqqqqqqqqqqpgqjv0lcvzr8wqgvt2rekzw5vp39mxvf5du6xwsm98qfu",
-        "deployTransaction-testnet": "2cf7fefe29154b302318673f96145c1bc2f5c1fe3ee05fa26626402cd7b1c6e0"
+        "address-testnet": "erd1qqqqqqqqqqqqqpgqhh2rpvn76xlqflereqhruce94sjfnq6g6xwscssf5d",
+        "deployTransaction-testnet": "d9fe52322e0b7906817597729b09f2993ccf9c43d347036b11f4d3e2e41cff18"
     }
 }

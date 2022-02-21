@@ -148,13 +148,13 @@ pub trait LandboardIco {
         let token_price = self.token_price().get();
         let token_id = self.token_id().get();
         let locked_token_id = self.locked_token_id().get();
-        let available_token_amount = self.blockchain().get_sc_balance(&token_id, 0);
-        let available_locked_token_amount = self.blockchain().get_sc_balance(&locked_token_id, 0);
+        // let available_token_amount = self.blockchain().get_sc_balance(&token_id, 0);
+        // let available_locked_token_amount = self.blockchain().get_sc_balance(&locked_token_id, 0);
 
         let token_amount = BigUint::from(1_000_000_000_000_000_000u64) * &paid_amount / &token_price * &BigUint::from(20u64) / &BigUint::from(100u64);
         let locked_token_amount = BigUint::from(1_000_000_000_000_000_000u64) * &paid_amount / &token_price * &BigUint::from(80u64) / &BigUint::from(100u64);
-        require!(token_amount <= available_token_amount, "not enough tokens available");
-        require!(locked_token_amount <= available_locked_token_amount, "not enough locked tokens available");
+        // require!(token_amount <= available_token_amount, "not enough tokens available");
+        // require!(locked_token_amount <= available_locked_token_amount, "not enough locked tokens available");
 
         self.send().direct(&caller, &token_id, 0, &token_amount, &[]);
         self.send().direct(&caller, &locked_token_id, 0, &locked_token_amount, &[]);
