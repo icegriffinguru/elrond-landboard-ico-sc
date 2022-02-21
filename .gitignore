@@ -2,6 +2,6 @@
 # will have compiled files and executables
 /target/
 */target/
-
+/wallets/
 # The erdpy output
 output*
