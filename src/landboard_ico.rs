@@ -168,7 +168,7 @@ pub trait LandboardIco {
     /// private functions ///
     
     fn require_activation(&self) {
-        require!(self.sale_started().get(), "Sale is not started.");
+        require!(self.sale_started().get(), "sale is not started");
     }
 
 

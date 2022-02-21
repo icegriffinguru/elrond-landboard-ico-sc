@@ -1,0 +1,106 @@
+{
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:owner": {
+                    "balance": "1,000,000,000,000,000,000",
+                    "nonce": "0",
+                    "esdt": {
+                        "str:LAND-123456": "500_000_000_000_000_000_000_000",
+                        "str:LKLAND-123456": "2_000_000_000_000_000_000_000_000"
+                    }
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:owner",
+                    "creatorNonce": "0",
+                    "newAddress": "sc:main"
+                }
+            ]
+        },
+        {
+            "step": "scDeploy",
+            "txId": "deploy",
+            "tx": {
+                "from": "address:owner",
+                "contractCode": "file:../output/elrond-landboard-ico-sc.wasm",
+                "gasLimit": "10,000,000",
+                "gasPrice": "0",
+                "arguments": [
+                    "str:LAND-123456",
+                    "str:LKLAND-123456",
+                    "200_000_000_000_000",
+                    "200_000_000_000_000_000",
+                    "1_000_000_000_000_000_000"
+                ]
+            },
+            "expect": {
+                "out": [],
+                "status": "0",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "transfer",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:main",
+                "egldValue": "0",
+                "esdtValue": [
+                    {
+                        "tokenIdentifier": "str:LAND-123456",
+                        "value": "500_000_000_000_000_000_000_000"
+                    }
+                ],
+                "gasLimit": "10,000,000",
+                "gasPrice": "0"
+            }
+        },
+        {
+            "step": "transfer",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:main",
+                "egldValue": "0",
+                "esdtValue": [
+                    {
+                        "tokenIdentifier": "str:LKLAND-123456",
+                        "value": "2_000_000_000_000_000_000_000_000"
+                    }
+                ],
+                "gasLimit": "10,000,000",
+                "gasPrice": "0"
+            }
+        },
+        {
+            "step": "checkState",
+            "accounts": {
+                "address:owner": {
+                    "balance": "1,000,000,000,000,000,000",
+                    "nonce": "3"
+                },
+                "sc:main": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "code": "file:../output/elrond-landboard-ico-sc.wasm",
+                    "esdt": {
+                        "str:LAND-123456": "500_000_000_000_000_000_000_000",
+                        "str:LKLAND-123456": "2_000_000_000_000_000_000_000_000"
+                    },
+                    "storage": {
+                        "str:token_id": "str:LAND-123456",
+                        "str:locked_token_id": "str:LKLAND-123456",
+                        "str:token_price": "200_000_000_000_000",
+                        "str:min_buy_limit": "200_000_000_000_000_000",
+                        "str:max_buy_limit": "1_000_000_000_000_000_000"
+                    }
+                },
+                "+": {}
+            }
+        }
+    ]
+}
