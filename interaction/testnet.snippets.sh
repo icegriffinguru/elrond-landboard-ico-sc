@@ -66,3 +66,14 @@ get_token_price() {
     --proxy=${PROXY} \
     --chain=${CHAIN_ID}
 }
+
+withdraw_egld() {
+    erdpy --verbose contract call ${ADDRESS} \
+    --recall-nonce \
+    --pem=${WALLET} \
+    --gas-limit=5000000 \
+    --function="withdrawEgld" \
+    --send \
+    --proxy=${PROXY} \
+    --chain=${CHAIN_ID}
+}
